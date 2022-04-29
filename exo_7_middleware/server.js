@@ -1,9 +1,11 @@
 const http = require('http');
 const server = http.createServer((req, res) => {
+let start = performance.now();;
+
 	try {
 		// ICI MIDDLEWARE A EXECUTER AVANT DE TRAITER LA REQUETE
 		console.log(req.httpVersion, req.url, req.method)
-		console.time("Durée requête")
+		console.time("Durée requête");
 		// FIN MIDDLEWARE
 
 		if(req.url === "/"){
@@ -23,7 +25,9 @@ const server = http.createServer((req, res) => {
 	res.end();
 
 	// ICI MIDDLEWARE A EXECUTER APRES AVOIR TRAITER LA REQUETE
-	console.timeEnd("Durée requête")
+	console.timeEnd("Durée requête");
+	let end = performance.now();
+	console.log(end - start + 'ms');
 	// FIN MIDDLEWARE
 
 	
