@@ -44,36 +44,36 @@ describe('Test server', () => {
 	});
 
 
-	describe.skip('Route /public', () => {
+	describe('Route /public', () => {
 
 		test.each(
-			['style.css', 'image.jpg', 'script.js']
+			['/css/style.css', '/jpg/image.jpg', '/js/script.js']
 		)
 		('GET\t - Récupération de fichier, exemple -> %p', (a) => {
 			return request(server)
-			.get('/public/' + a)
+			.get(a)
 			.expect(200)
 		})
 
-		test('POST\t - Should return 405 error', () => {
+		test('POST\t - Should return 404 error', () => {
 			return request(server)
 			.post('/public/script.js')
 			.expect("Content-Type", /html/)
-			.expect(405)
+			.expect(404)
 		});
 
-		test('PUT\t - Should return 405 error', () => {
+		test('PUT\t - Should return 404 error', () => {
 			return request(server)
 			.put('/public/script.js')
 			.expect("Content-Type", /html/)
-			.expect(405)
+			.expect(404)
 		});
 
-		test('DELETE\t - Should return 405 error', () => {
+		test('DELETE\t - Should return 404 error', () => {
 			return request(server)
 			.delete('/public/script.js')
 			.expect("Content-Type", /html/)
-			.expect(405)
+			.expect(404)
 		});
 
 	})
