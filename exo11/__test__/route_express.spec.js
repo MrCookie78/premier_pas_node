@@ -51,7 +51,7 @@ describe('Test server', () => {
 		)
 		('GET\t - Récupération de fichier, exemple -> %p', (a) => {
 			return request(server)
-			.get(a)
+			.get('/public' + a)
 			.expect(200)
 		})
 

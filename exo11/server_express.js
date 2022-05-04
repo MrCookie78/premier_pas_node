@@ -5,7 +5,7 @@ const server = express()
 const db = require('./db')
 
 server.use(express.json());
-server.use(express.static('public'));
+server.use('/public', express.static('public'));
 
 server.get('/api/names', (req, res) => {
 	res.json(Object.fromEntries(db.memoryDb))
