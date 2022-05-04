@@ -4,14 +4,14 @@ const db = require('../db');
 
 describe('Test server', () => {
 
-	test.skip('GET\t - Undefined route. Should return 404 error', () => {
+	test('GET\t - Undefined route. Should return 404 error', () => {
 		request(server)
-		.get('/')
+		.get('/blablablabla')
 		.expect("Content-Type", /html/)
 		.expect(404)
 	});
 
-	describe.skip('Route /', () => {
+	describe('Route /', () => {
 
 		test('GET\t - Should return html and code 200', async () => {
 			const res = await request(server)
@@ -20,25 +20,25 @@ describe('Test server', () => {
 				.expect(200)
 		});
 
-		test('POST\t - Should return 405 error',  () => {
+		test('POST\t - Should return 404 error',  () => {
 			request(server)
 				.get('/')
 				.expect("Content-Type", /html/)
-				.expect(405)
+				.expect(404)
 		});
 
-		test('PUT\t - Should return 405 error',  () => {
+		test('PUT\t - Should return 404 error',  () => {
 			request(server)
 				.get('/')
 				.expect("Content-Type", /html/)
-				.expect(405)
+				.expect(404)
 		});
 
-		test('DELETE\t - Should return 405 error',  () => {
+		test('DELETE\t - Should return 404 error',  () => {
 			request(server)
 				.get('/')
 				.expect("Content-Type", /html/)
-				.expect(405)
+				.expect(404)
 		});
 
 	});
